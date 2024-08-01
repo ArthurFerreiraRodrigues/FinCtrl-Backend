@@ -7,11 +7,11 @@
     "start:build": "node build/index.js",
     "docs": "node scripts/docs.js",
     "build": "rimraf build && tsc -p tsconfig.build.json",
-    "prisma_studio_dev": "dotenv -e env/.env prisma studio",
-    "prisma_studio_container": "prisma studio",
-    "migrate": "dotenv -e env/.env prisma migrate dev",
-    "migrate_container": "prisma migrate deploy",
-    "migrate_reset": "dotenv -e env/.env prisma migrate reset"
+    "prisma_studio_dev": "dotenv -e env/.env npx prisma studio",
+    "prisma_studio_container": "npx prisma studio",
+    "migrate": "dotenv -e env/.env npx prisma migrate dev",
+    "migrate_container": "npx prisma migrate deploy",
+    "migrate_reset": "dotenv -e env/.env npx prisma migrate reset"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.6",

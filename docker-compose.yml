@@ -16,7 +16,7 @@ services:
 
   # Change image name
   web:
-    image: Backend
+    image: FinCtrl-Backend
     build:
       context: .
       dockerfile: ./Dockerfile

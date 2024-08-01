@@ -14,5 +14,46 @@ datasource db {
 }
 
 model User {
-    id Int @id @default(autoincrement())
+    id             Int     @id @default(autoincrement())
+    amountInvested Decimal @default(0)
+    amountInBank   Decimal @default(0)
+    goalMonthly    Decimal @default(0)
+    savingsGoal    Decimal @default(0)
+
+    cards   Card[]
+    incomes Income[]
+}
+
+model Card {
+    name      String     @id
+    purchases Purchase[]
+
+    ownerID Int
+    owner   User @relation(fields: [ownerID], references: [id])
+}
+
+model Income {
+    name   String  @id
+    amount Decimal @default(0)
+
+    ownerID Int
+    owner   User @relation(fields: [ownerID], references: [id])
+}
+
+model Purchase {
+    id            Int     @id @default(autoincrement())
+    amount        Decimal
+    purchaseMonth Int
+
+    method    PaymentMethod @default(STANDART)
+    qtdParcel Int           @default(1)
+
+    cardID String
+    card   Card   @relation(fields: [cardID], references: [name])
+}
+
+enum PaymentMethod {
+    STANDART
+    INSTALMENT
+    RECURRING
 }
